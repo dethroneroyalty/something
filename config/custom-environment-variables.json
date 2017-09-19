@@ -1,4 +1,4 @@
 {
   "port": "PORT",
-  "mongodb": "MONGODB_URL"
+  "mongourl": "MONGODB_URL"
 }
