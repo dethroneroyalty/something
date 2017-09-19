@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 
 const { setConfig } = require("./utils");
 const setRoutes = require("./routes");
+const setMiddlewares = require("./middlewares");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, "../public")));
 
+setMiddlewares(app);
 setRoutes(app);
 
 // catch 404 and forward to error handler
