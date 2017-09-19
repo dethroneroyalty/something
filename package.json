@@ -1,0 +1,32 @@
+{
+  "name": "something",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./server",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "config": "^1.26.2",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.7.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.1",
+    "prettier": "^1.7.0"
+  },
+  "main": "index.js",
+  "author": "Oleg Tsyba <oleg.tsyba.ua@gmail.com>"
+}
