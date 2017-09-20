@@ -1,9 +1,22 @@
-var express = require("express");
-var router = express.Router();
+const { Transform } = require("stream");
+const JSONStream = require("JSONStream");
+const express = require("express");
 
-// GET users listing.
-router.route("/").get(function(req, res, next) {
-  res.send("respond with a user");
-});
+const router = express.Router();
 
-module.exports = router;
+module.exports = function(db) {
+  // GET users listing.
+  router.route("/").get(function(req, res, next) {
+    const User = db.collection("users");
+
+    res.status(200);
+    res.type("json");
+
+    User.find()
+      .limit(10)
+      .pipe(JSONStream.stringify())
+      .pipe(res);
+  });
+
+  return router;
+};
