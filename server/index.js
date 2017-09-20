@@ -39,3 +39,5 @@ app.then(app => {
     debug("Listening on " + bind);
   }
 });
+
+process.on("unhandledRejection", console.error);
