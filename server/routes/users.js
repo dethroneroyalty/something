@@ -15,7 +15,7 @@ module.exports = function(db) {
       res.type("json");
 
       User.find()
-        .limit(10)
+        .limit(30)
         .pipe(JSONStream.stringify())
         .pipe(res);
     })
@@ -36,14 +36,23 @@ module.exports = function(db) {
         .join("_");
 
       if (!valid) {
-        return res.redirect("back");
+        res.status(422);
+        res.send({
+          type: "error",
+          message: "User data is not valid"
+        });
+        return;
       }
 
       await User.insertOne({ name, age, slug }, { w: 1, wtimeout: 100 }).catch(
         console.error
       );
 
-      res.redirect("/api/users");
+      res.status(200);
+      res.send({
+        type: "ok",
+        slug
+      });
     });
 
   router.route("/:slug").get(async function(req, res, next) {
