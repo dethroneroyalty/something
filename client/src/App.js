@@ -1,6 +1,8 @@
 import { h, Component } from "preact";
 import { Link, Route } from "react-router-dom";
 
+import "./App.css";
+
 import CreateUserForm from "./components/CreateUserForm";
 import ListOfUsers from "./components/ListOfUsers";
 
@@ -31,13 +33,13 @@ export default class App extends Component {
       <div>
         <ul>
           <li>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/users">Users</Link>
           </li>
           <li>
-            <Link to="/users/new">Create User</Link>
+            <Link to="/users/new">New User</Link>
           </li>
         </ul>
         <Route
