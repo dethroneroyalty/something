@@ -20,6 +20,7 @@
     "express": "~4.15.2",
     "mongodb": "^2.2.31",
     "morgan": "~1.8.1",
+    "preact-render-to-string": "^3.6.3",
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {

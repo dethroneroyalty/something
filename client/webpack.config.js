@@ -30,35 +30,10 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
       },
-      //    {
-      //      test: /.*/,
-      //      include: [p.resolve((__dirname, "pages/admin"))],
-      //      loader: 'bundle?lazy&name=admin'
-      //    },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              [
-                "env",
-                {
-                  targets: {
-                    browsers: ">1%"
-                  },
-                  useBuiltIns: true
-                }
-              ]
-            ],
-            plugins: [
-              "transform-class-properties",
-              "transform-object-rest-spread",
-              ["transform-react-jsx", { pragma: "h" }]
-            ]
-          }
-        }
+        use: ["react-hot-loader/webpack", "babel-loader"]
       }
     ]
   }

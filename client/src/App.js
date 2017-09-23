@@ -1,5 +1,8 @@
 import { h, Component } from "preact";
-import { Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
 
 import "./App.css";
 
@@ -30,28 +33,32 @@ export default class App extends Component {
 
   render(_, { users }) {
     return (
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-          <li>
-            <Link to="/users/new">New User</Link>
-          </li>
-        </ul>
-        <Route
-          path="/users"
-          exact
-          render={props => <ListOfUsers {...props} users={users} />}
-        />
-        <Route
-          path="/users/new"
-          render={props => <CreateUserForm {...props} addUser={this.addUser} />}
-        />
-      </div>
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+            <li>
+              <Link to="/users/new">New User</Link>
+            </li>
+          </ul>
+          <Route
+            path="/users"
+            exact
+            render={props => <ListOfUsers {...props} users={users} />}
+          />
+          <Route
+            path="/users/new"
+            render={props => (
+              <CreateUserForm {...props} addUser={this.addUser} />
+            )}
+          />
+        </div>
+      </Router>
     );
   }
 }
